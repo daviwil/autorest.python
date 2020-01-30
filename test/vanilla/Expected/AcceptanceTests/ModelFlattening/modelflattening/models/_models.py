@@ -67,7 +67,7 @@ class ErrorException(HttpResponseError):
 
 
 class Error(Model):
-    """Error.
+    """
 
     :param status:
     :type status: int
@@ -95,7 +95,7 @@ class Error(Model):
 
 
 class Resource(Model):
-    """Resource.
+    """
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -198,7 +198,7 @@ class FlattenedProduct(Resource):
 
 
 class FlattenedProductProperties(Model):
-    """FlattenedProductProperties.
+    """
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -298,7 +298,7 @@ class ProductWrapper(Model):
 
 
 class ResourceCollection(Model):
-    """ResourceCollection.
+    """
 
     :param productresource: Flattened product.
     :type productresource: ~modelflattening.models.FlattenedProduct
@@ -342,6 +342,8 @@ class SimpleProduct(BaseProduct):
     :ivar capacity: Capacity of product. For example, 4 people. Default value:
      "Large".
     :vartype capacity: str
+    :param generic_value: Generic URL value.
+    :type generic_value: str
     :param odata_value: URL value.
     :type odata_value: str
     """
@@ -356,6 +358,7 @@ class SimpleProduct(BaseProduct):
         'description': {'key': 'base_product_description', 'type': 'str'},
         'max_product_display_name': {'key': 'details.max_product_display_name', 'type': 'str'},
         'capacity': {'key': 'details.max_product_capacity', 'type': 'str'},
+        'generic_value': {'key': 'details.max_product_image.generic_value', 'type': 'str'},
         'odata_value': {'key': 'details.max_product_image.@odata\\.value', 'type': 'str'},
     }
 
@@ -367,6 +370,7 @@ class SimpleProduct(BaseProduct):
     ):
         super(SimpleProduct, self).__init__(**kwargs)
         self.max_product_display_name = kwargs.get('max_product_display_name', None)
+        self.generic_value = kwargs.get('generic_value', None)
         self.odata_value = kwargs.get('odata_value', None)
 
 
@@ -382,6 +386,8 @@ class SimpleProductProperties(Model):
     :ivar capacity: Required. Capacity of product. For example, 4 people. Default
      value: "Large".
     :vartype capacity: str
+    :param generic_value: Generic URL value.
+    :type generic_value: str
     :param odata_value: URL value.
     :type odata_value: str
     """
@@ -394,6 +400,7 @@ class SimpleProductProperties(Model):
     _attribute_map = {
         'max_product_display_name': {'key': 'max_product_display_name', 'type': 'str'},
         'capacity': {'key': 'max_product_capacity', 'type': 'str'},
+        'generic_value': {'key': 'max_product_image.generic_value', 'type': 'str'},
         'odata_value': {'key': 'max_product_image.@odata\\.value', 'type': 'str'},
     }
 
@@ -405,6 +412,7 @@ class SimpleProductProperties(Model):
     ):
         super(SimpleProductProperties, self).__init__(**kwargs)
         self.max_product_display_name = kwargs.get('max_product_display_name', None)
+        self.generic_value = kwargs.get('generic_value', None)
         self.odata_value = kwargs.get('odata_value', None)
 
 
